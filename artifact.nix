@@ -35,7 +35,7 @@ stdenv.mkDerivation rec {
       url = mkUrl "validate-i386-linux-deb9";
     };
     "x86_64-linux" = {
-      url = mkUrl "validate-x86_64-linux-deb8";
+      url = mkUrl "validate-x86_64-linux-deb9";
     };
     "aarch64-linux" = {
       url = mkUrl "validate-aarch64-linux-deb9";
