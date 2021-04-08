@@ -33,6 +33,7 @@ let
         name = "bindist-version";
         src = bindistTarball;
         nativeBuildInputs = [ gcc perl ];
+        configurePhase = "";
         buildPhase = ''
           # Run it twice since make might produce related output the first time.
           make show VALUE=ProjectVersion
