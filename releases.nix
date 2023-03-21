@@ -1,23 +1,8 @@
-{ baseNixpkgs ? (import <nixpkgs> {}) }:
+{ pkgs }:
 
 let
-  nixpkgsSrc = baseNixpkgs.fetchFromGitHub {
-    owner = "nixos";
-    repo = "nixpkgs";
-    rev = "c2ef0cee28a17f6fcb64ea0d0fb705f8c5ee6cf3";
-    sha256 = "05vvj1693p6d56l9wl7f2cxdrn57sdgx6wa1vph67brl8xzlmzbc";
-  };
-  nixpkgs = import nixpkgsSrc {};
-in with nixpkgs;
-
-let
-  fromBindist = { url, sha256, ncursesVersion ? "6" }:
-    nixpkgs.callPackage ./artifact.nix {} {
-      bindistTarball = nixpkgs.fetchurl {
-        inherit url sha256;
-      };
-      inherit ncursesVersion;
-    };
+  lib = import ./lib.nix { inherit pkgs; };
+  inherit (lib) fromBindist;
   downloads = "https://downloads.haskell.org/ghc";
 in
 {

@@ -1,7 +1,9 @@
 { stdenv, lib, patchelf
 , perl, gcc, gcc-unwrapped, llvm
 , ncurses6, ncurses5, gmp, glibc, libiconv, numactl
-}: { bindistTarball, ncursesVersion }:
+}:
+
+{ bindistTarball, ncursesVersion }:
 
 # Prebuilt only does native
 assert stdenv.targetPlatform == stdenv.hostPlatform;
